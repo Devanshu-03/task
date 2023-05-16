@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <h2>Registration Form</h2>
+<form action="/" method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="f_name"  class="form-label">First Name:</label>
+    <input type="text" class="form-control" id="f_name" name="f_name" required><br><br>
+  </div>
+  <div class="mb-3">
+    <label for="l_name" class="form-label">Last Name:</label>
+  <input type="text" id="l_name" class="form-control" name="l_name" required><br><br>
+  </div>
+  
+  <div class="mb-3">
+    <label for="email" class="form-label" >Email Address:</label>
+  <input type="email" class="form-control" id="email" name="email_id" required><br><br>
+  </div>
+  
+  <div class="mb-3">
+    <label for="phone" class="form-label" >Phone Number:</label>
+  <input type="tel" class="form-control" id="phone" name="phone_number" required><br><br>
+  </div>
+  
+  <div class="mb-3">
+    <label for="address" class="form-label" >Address:</label>
+  <textarea id="address"class="form-control" name="address" rows="4" required></textarea><br><br>
+  </div>
+  
+  <input type="submit" value="Submit">
+</form>
+</div>
+
+{% endblock content %}
+
+
+

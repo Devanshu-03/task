@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>API Display</title>
+<body>
+<!-- user_list.html -->
+
+    <h1>User List</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email_id</th>
+            <th scope="col">Phone_number</th>
+            <th scope="col">Address</th>
+            <th scope="col">Created_Date</th>
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+            {% if response.results %}
+                {% for user in response.results %}
+            <tr>
+                <th scope="row">{{user.id}}</th>
+                <td>{{user.f_name}}</td>
+                <td>{{user.l_name}}</td>
+                <td>{{user.email_id}}</td>
+                <td>{{user.phone_number}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.created_date}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <!-- Handle case when no results are available -->
+            <p>No users found.</p>
+        {% endif %}
+        </tbody>
+      </table>
+      <!--pagination-->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          {% if response.next %}
+          <li class="page-item"><a class="page-link" href="{{response.next}}">next</a></li>
+            {% endif %}
+            {% if response.current %}
+            <li class="page-item"><a class="page-link" href="{{ response.current}}">current</a></li>
+            {% endif %}
+          {% if response.previous %}
+          <li class="page-item"><a class="page-link" href="{{response.previous}}">Previous</a></li>
+          {% else %}
+          <li class="page-item"><a class="page-link" href="{{response.previous}}">Previous</a></li>
+
+          {% endif %}
+      </nav>
+    
+    
+        <!-- Display other user fields as needed -->
+{% endblock content %}
+
